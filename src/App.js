@@ -7,16 +7,26 @@ import { Contact } from './pages/Contact';
 import { PrivateRoute } from './routes/PrivateRoute';
 import { PublicRoute } from './routes/PublicRoute';
 import { AppBar } from './components/AppBar/AppBar';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { useEffect } from 'react';
 import { currentThunk } from './redux/auth/thunks';
 
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 function App() {
   const dispatch = useDispatch();
-  
+  const isError = useSelector(state => state.auth.error);
+  console.log(isError);
   useEffect(() => {
     dispatch(currentThunk())
   }, [dispatch]);
+
+  useEffect(() => {
+    if (isError) {
+      toast('Incorrect login or password');
+    }
+  }, [isError]);
 
   return (
     <div>
@@ -34,6 +44,7 @@ function App() {
           
         </Routes>
       </main>
+      <ToastContainer />
     </div>
   );
 }

@@ -9,16 +9,8 @@ const authSlice = createSlice({
         error: null,
         isLoading: false,
         isAuth: false,
-        myProp: 'Hello',
     },
-    reducers: {
-        'renameProp': (state, action) => {
-            return {
-                ...state,
-                myProp: action.payload,
-            }
-        }
-    },
+    
     extraReducers: {
         [registerThunk.pending](state, action) {
             return {
@@ -62,7 +54,8 @@ const authSlice = createSlice({
             return {
                 ...state,
                 isLoading: false,
-                error: action.payload,
+                error: action.error,
+                isAuth: false,
             }
         },
 
@@ -112,6 +105,6 @@ const authSlice = createSlice({
     }
 });
 
-export const { renameProp } = authSlice.actions;
 export default authSlice.reducer;
 
+// buddy2317@gmail.com

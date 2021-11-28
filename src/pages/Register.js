@@ -1,13 +1,14 @@
 import { useState } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { registerThunk } from "../redux/auth/thunks";
+import { Navigate } from "react-router-dom";
 
 export function Register() {
     const [name, setName] = useState('');
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
-    
-    const dispatch = useDispatch()
+    const dispatch = useDispatch();
+    const isAuth = useSelector(state => state.auth.isAuth);
 
     const handleChange = (e) => {
         switch (e.target.name) {
@@ -66,8 +67,9 @@ export function Register() {
                     onChange={handleChange}>
                 </input>
                 <br />
-                <button type='submit'>ADD</button>
+                <button type='submit'>Register</button>
             </form>
+            { isAuth && <Navigate to="/contacts" /> }
         </>
     )
 }

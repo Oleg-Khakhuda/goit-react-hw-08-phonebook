@@ -17,12 +17,16 @@ export const registerThunk = createAsyncThunk(
                 },
                 body: JSON.stringify(user),
             });
-            console.log(response);
-            const data = await response.json();
-            console.log(data);
-            return data;
+            if (response.status === 200) {
+                const data = await response.json();
+                return data
+            } else {
+                throw response;
+                // const data = await response.json();
+                // return data;
+            }
         } catch (error) {
-            rejectWithValue({ error: error.message })
+            return rejectWithValue({ error: error.message })
         }
     });
 
@@ -37,11 +41,18 @@ export const loginThunk = createAsyncThunk(
                 },
                 body: JSON.stringify(user),
             });
-            const data = await response.json();
-            return data;
+            if (response.status === 200) {
+                const data = await response.json();
+                return data
+                } else {
+                throw response;
+                }
+            // const data = await response.json();
+            // console.log(data);
+            // return data
         } catch (error) {
-            rejectWithValue({ error: error.message })
-        }
+            return rejectWithValue({ error: error.message })
+            }
     });
 
 export const currentThunk = createAsyncThunk(
@@ -76,9 +87,7 @@ export const logoutThunk = createAsyncThunk(
                     Authorization: `Bearer ${token}`,
                 },
             });
-            console.log(response);
             const data = await response.json();
-            console.log(data);
             return data;
         } catch (error) {
             rejectWithValue({ error: error.message })
