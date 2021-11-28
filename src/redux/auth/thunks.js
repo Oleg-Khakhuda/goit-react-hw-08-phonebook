@@ -37,9 +37,7 @@ export const loginThunk = createAsyncThunk(
                 },
                 body: JSON.stringify(user),
             });
-            // console.log(response);
             const data = await response.json();
-            // console.log(data);
             return data;
         } catch (error) {
             rejectWithValue({ error: error.message })
@@ -51,6 +49,7 @@ export const currentThunk = createAsyncThunk(
     async (_, { rejectWithValue, getState }) => {
         const state = getState();
         const token = state.auth.token;
+        
         if (!token) return;
         try {
             const response = await fetch(BASE_USER_URL + userCurrent, {
@@ -58,9 +57,7 @@ export const currentThunk = createAsyncThunk(
                     Authorization: `Bearer ${token}`,
                 },
             });
-            console.log(response);
             const data = await response.json();
-            console.log(data);
             return data;
         } catch (error) {
             rejectWithValue({ error: error.message })

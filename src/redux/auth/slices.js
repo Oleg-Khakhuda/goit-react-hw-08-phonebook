@@ -77,7 +77,6 @@ const authSlice = createSlice({
                 ...state,
                 isLoading: false,
                 user: action.payload,
-                isAuth: true,
             }
         },
         [currentThunk.rejected](state, action) {
@@ -108,18 +107,11 @@ const authSlice = createSlice({
                 ...state,
                 isLoading: false,
                 error: action.payload,
-                // isAuth: false,
             }
         },
     }
 });
 
-// buddy2316@gmail.com
-
-
 export const { renameProp } = authSlice.actions;
 export default authSlice.reducer;
-
-const BASE_CONTACT_URL = 'https://61912c1741928b001768ff87.mockapi.io/';
-const contacts = '/contacts';
 

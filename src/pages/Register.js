@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useDispatch } from "react-redux";
-import { registerThunk } from "../redux/thunks";
+import { registerThunk } from "../redux/auth/thunks";
 
 export function Register() {
     const [name, setName] = useState('');

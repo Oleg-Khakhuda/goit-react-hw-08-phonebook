@@ -1,5 +1,6 @@
 import { configureStore } from '@reduxjs/toolkit';
-import authReducer from '../redux/slices';
+import authReducer from './auth/slices';
+import { contactReducer } from '../redux/contacts/reducer';
 import {
   persistStore,
   persistReducer,
@@ -11,7 +12,6 @@ import {
   REGISTER,
 } from 'redux-persist';
 import storage from 'redux-persist/lib/storage';
-import { getDefaultNormalizer } from '@testing-library/dom';
   
 const authPersistConfig = {
     key: 'authToken',
@@ -24,6 +24,8 @@ const authPersistReducer = persistReducer(authPersistConfig, authReducer)
 export const store = configureStore({
     reducer: {
         auth: authPersistReducer,
+        contacts: contactReducer,
+
     },
     middleware: (getDefaultMiddleware) =>
         getDefaultMiddleware({

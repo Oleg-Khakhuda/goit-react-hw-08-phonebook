@@ -1,12 +1,13 @@
 import { useState } from "react";
-import { useDispatch } from "react-redux";
-import { loginThunk } from "../redux/thunks";
+import { useDispatch, useSelector } from "react-redux";
+import { loginThunk } from "../redux/auth/thunks";
+import { Navigate } from "react-router-dom";
 
 export function Login() {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
-    
-    const dispatch = useDispatch()
+    const dispatch = useDispatch();
+    const isAuth = useSelector(state => state.auth.isAuth);
 
     const handleChange = (e) => {
         switch (e.target.name) {
@@ -53,8 +54,9 @@ export function Login() {
                     onChange={handleChange}>
                 </input>
                 <br />
-                <button type='submit'>ADD</button>
+                <button type='submit'>Login</button>
             </form>
+            { isAuth && <Navigate to="/contacts" /> }
         </>
     )
 }
