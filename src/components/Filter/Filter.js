@@ -10,16 +10,19 @@ const Filter = () => {
   const onChangeFilter = e => dispatch(changeFilter(e.target.value));
 
   return (
-    <form className={s.form}>
-      <label className={s.label}>Find contacts by name</label>
-      <input
-        className={s.input}
-        type="text"
-        value={value}
-        pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
-        onChange={onChangeFilter}
-      />
-    </form>
+    <>
+      <h2 className={s.title}>Contacts</h2>
+      <form className={s.form}>
+        <label className={s.label}>Find contacts by name</label>
+        <input
+          className={s.input}
+          type="text"
+          value={value}
+          pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
+          onChange={onChangeFilter}
+        />
+      </form>
+    </>
   );
 };
 

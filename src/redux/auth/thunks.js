@@ -22,8 +22,6 @@ export const registerThunk = createAsyncThunk(
                 return data
             } else {
                 throw response;
-                // const data = await response.json();
-                // return data;
             }
         } catch (error) {
             return rejectWithValue({ error: error.message })
@@ -47,9 +45,6 @@ export const loginThunk = createAsyncThunk(
                 } else {
                 throw response;
                 }
-            // const data = await response.json();
-            // console.log(data);
-            // return data
         } catch (error) {
             return rejectWithValue({ error: error.message })
             }

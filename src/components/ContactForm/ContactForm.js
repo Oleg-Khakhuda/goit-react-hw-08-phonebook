@@ -3,6 +3,7 @@ import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import operations from '../../redux/contacts/operations';
 import { getContacts } from '../../redux/contacts/selectors';
+import Button from 'react-bootstrap/Button';
 import s from './ContactForm.module.css';
 
 const ContactForm = () => {
@@ -45,6 +46,8 @@ const ContactForm = () => {
   };
 
   return (
+    <>
+    <h1 className={s.title}>Phonebook</h1>
     <form className={s.form} onSubmit={handleSubmit}>
       <label className={s.label}>Name</label>
       <input
@@ -68,10 +71,11 @@ const ContactForm = () => {
         required
         onChange={handleChange}
       />
-      <button className={s.button} type="submit">
+      <Button variant='dark' className={s.button} type="submit">
         Add contact
-      </button>
-    </form>
+      </Button>
+      </form>
+      </>
   );
 };
 

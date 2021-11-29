@@ -1,8 +1,9 @@
-import s from './ContactsList.module.css';
 import { useSelector, useDispatch } from 'react-redux';
 import { getFilteredContacts } from '../../redux/contacts/selectors';
 import { useEffect } from 'react';
 import operations from '../../redux/contacts/operations';
+import s from './ContactsList.module.css';
+import Button from 'react-bootstrap/Button';
 
 const ContactsList = () => {
   const contacts = useSelector(getFilteredContacts);
@@ -19,14 +20,14 @@ const ContactsList = () => {
       {contacts.map(contact => (
         <li className={s.listItem} key={contact.id}>
           {contact.name}: {contact.phone}
-          <button
-            className={s.deleteButton}
+          <Button
+            variant='dark'  
             type="button"
             id={contact.id}
             onClick={onDeleteContacts}
           >
             Delete
-          </button>
+          </Button>
         </li>
       ))}
     </ul>

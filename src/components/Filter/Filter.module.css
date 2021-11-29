@@ -1,13 +1,19 @@
+.title {
+  display: flex;
+  justify-content: center;
+  text-align: center;
+}
+
 .form {
   width: 400px;
   margin-left: auto;
   margin-right: auto;
   text-align: center;
-  background-color: rgb(199, 244, 252);
   border-radius: 2px;
-  border: 2px solid rgb(61, 61, 61);
+  border: 2px solid rgb(33, 37, 41);
   padding-bottom: 20px;
   margin-top: 20px;
+  margin-bottom: 20px;
 }
 
 .label {

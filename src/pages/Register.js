@@ -2,6 +2,8 @@ import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { registerThunk } from "../redux/auth/thunks";
 import { Navigate } from "react-router-dom";
+import s from './Register.module.css';
+import Button from 'react-bootstrap/Button';
 
 export function Register() {
     const [name, setName] = useState('');
@@ -41,33 +43,37 @@ export function Register() {
 
     return (
         <>
-            <h2>Register form</h2>
-            <form onSubmit={handleSubmit}>
+            <h2 className={s.title}>Register form</h2>
+            <form className={s.form} onSubmit={handleSubmit}>
+                <label className={s.label}>Name</label>
                 <input
+                    className={s.input} 
                     type='text'
                     name='name'
                     value={name}
                     placeholder='name'
                     onChange={handleChange}>
                 </input>
-                <br />
+                <label className={s.label}>Email</label>
                 <input
+                    className={s.input} 
                     type='text'
                     name='email'
                     value={email}
                     placeholder='email'
                     onChange={handleChange}>
                 </input>
-                <br />
+                <label className={s.label}>Password</label>
                 <input
-                    type='text'
+                    className={s.input} 
+                    type='password'
                     name='password'
                     value={password}
                     placeholder='password'
                     onChange={handleChange}>
                 </input>
-                <br />
-                <button type='submit'>Register</button>
+                
+                <Button className={s.button} variant='dark' type='submit'>Register</Button>
             </form>
             { isAuth && <Navigate to="/contacts" /> }
         </>

@@ -10,14 +10,14 @@ import { AppBar } from './components/AppBar/AppBar';
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect } from 'react';
 import { currentThunk } from './redux/auth/thunks';
-
+import 'bootstrap/dist/css/bootstrap.min.css';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 function App() {
   const dispatch = useDispatch();
   const isError = useSelector(state => state.auth.error);
-  console.log(isError);
+  
   useEffect(() => {
     dispatch(currentThunk())
   }, [dispatch]);

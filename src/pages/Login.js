@@ -1,22 +1,15 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { loginThunk } from "../redux/auth/thunks";
 import { Navigate } from "react-router-dom";
-import { NavLink } from "react-router-dom";
 import s from "./Login.module.css";
+import Button from 'react-bootstrap/Button';
 
 export function Login() {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const dispatch = useDispatch();
     const isAuth = useSelector(state => state.auth.isAuth);
-    // const errorMessage = useSelector(state => state.auth.error);
-
-//     useEffect(() => {
-//     if (errorMessage) {
-//       alert('error');
-//     }
-//   }, [errorMessage]);
 
     const handleChange = (e) => {
         switch (e.target.name) {
@@ -45,25 +38,29 @@ export function Login() {
 
     return (
         <>
-            <h2>Login form</h2>
+            <h2 className={s.title}>Login form</h2>
             <form onSubmit={handleSubmit} className={s.form}>
+                <label className={s.label}>Email</label>
                 <input
+                    className={s.input}
                     type='text'
                     name='email'
                     value={email}
                     placeholder='email'
                     onChange={handleChange}>
                 </input>
-                <br />
+               
+                <label className={s.label}>Password</label>
                 <input
-                    type='text'
+                    className={s.input}
+                    type='password'
                     name='password'
                     value={password}
                     placeholder='password'
                     onChange={handleChange}>
                 </input>
                 <br />
-                <button type='submit'>Login</button>
+                <Button className={s.button} variant='dark' type='submit'>Login</Button>
             </form>
             { isAuth && <Navigate to="/contacts" /> }
         </>

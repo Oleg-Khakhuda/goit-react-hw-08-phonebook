@@ -107,4 +107,3 @@ const authSlice = createSlice({
 
 export default authSlice.reducer;
 
-// buddy2317@gmail.com
