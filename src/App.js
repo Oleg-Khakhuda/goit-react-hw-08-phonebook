@@ -40,8 +40,7 @@ function App() {
           <Route path='/' element={<PublicRoute component={Home} />} />
           <Route path='/login' element={<PublicRoute component={Login} />} />
           <Route path='/register' element={<PublicRoute component={Register} />} />
-          <Route path='/contacts' element={<PrivateRoute component={Contact} />} />
-          
+          <Route path='/contacts' element={<PrivateRoute component={Contact} />} />          
         </Routes>
       </main>
       <ToastContainer />

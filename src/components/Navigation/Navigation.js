@@ -13,7 +13,7 @@ export function Navigation() {
                     <Navbar.Collapse id="basic-navbar-nav">
                     <Nav className="me-auto">
                         <Nav.Link as={Link} to="/">Home</Nav.Link>
-                        <Nav.Link as={Link} to="/Login">Login</Nav.Link>
+                        <Nav.Link as={Link} to="/login">Login</Nav.Link>
                         <Nav.Link as={Link} to="/register">Registration</Nav.Link>
                     </Nav>
                     </Navbar.Collapse>
